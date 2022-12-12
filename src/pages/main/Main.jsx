@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./Main.css";
-import DetailArticle from "../../components/DetailArticle";
 import mainimage from "../../mainimage.png";
+import MainSection from "../../components/main/mainSection";
 
 function Main({ setpathname }) {
   useEffect(() => {
@@ -12,7 +12,7 @@ function Main({ setpathname }) {
     <>
       <section>
         <img src={mainimage} alt="인트로 이미지" className="mainimage"></img>
-        <DetailArticle />
+        <MainSection />
       </section>
     </>
   );

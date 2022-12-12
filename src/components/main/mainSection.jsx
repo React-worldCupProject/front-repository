@@ -1,11 +1,12 @@
 import styled from "styled-components";
+
 const MainSection = () => {
   return (
     <div>
       <StAddForm>
         <StInputGroup>
           <StTitle>
-            &#129351; 국가대표 선수들에게 응원의 한마디를 남겨주세요! &#128047;{" "}
+            &#129351; 국가대표 선수들에게 응원의 한마디를 남겨주세요! &#128047;
           </StTitle>
           <StFormLabel>제목</StFormLabel>
           <StAddInput />
@@ -14,13 +15,38 @@ const MainSection = () => {
           <StFormLabel>내용</StFormLabel>
           <StAddInput2 />
           <StAddButton>등록 &#127942;</StAddButton>
-          <p></p>
-          <p></p>
         </StInputGroup>
+        <p></p>
       </StAddForm>
-      <StAddForm2>
+      <StAddTitle>
         <StTitle>응원글 보러가기! &#9917; </StTitle>
-      </StAddForm2>
+        <ul>
+          <li>
+            <span>글번호 :</span>
+            <p> 1</p>
+            <span>제목 :</span>
+            <p> 우리는 할 수 있다</p>
+            <span>작성자 :</span>
+            <p>3조 화이팅</p>
+          </li>
+          <li>
+            <span>글번호 :</span>
+            <p> 1</p>
+            <span>제목 :</span>
+            <p> 우리는 할 수 있다</p>
+            <span>작성자 :</span>
+            <p>3조 화이팅</p>
+          </li>
+          <li>
+            <span>글번호 :</span>
+            <p> 1</p>
+            <span>제목 :</span>
+            <p> 우리는 할 수 있다</p>
+            <span>작성자 :</span>
+            <p>3조 화이팅</p>
+          </li>
+        </ul>
+      </StAddTitle>
     </div>
   );
 };
@@ -48,18 +74,46 @@ const StAddForm = styled.form`
   align-items: center;
   padding: 30px;
   gap: 0px;
+  p {
+  }
 `;
-const StAddForm2 = styled.form`
+const StAddTitle = styled.div`
+  display: block;
   background-color: #862525;
   background: #f9b1b17c;
   border-radius: 3px;
   margin: 0 auto;
-  display: block;
   align-items: center;
   padding: 30px;
-  gap: 0px;
-  display: grid;
   align-items: center;
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1440px;
+    margin: 0 auto;
+    li {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      border: 1px solid black;
+      list-style: none;
+      margin-bottom: 2%;
+      padding: 2% 2% 2% 2%;
+      background-color: white;
+      border-radius: 50px 50px 50px 50px;
+      span {
+        display: inline-block;
+        width: 25%;
+        text-align: center;
+      }
+      p {
+        display: inline-block;
+        width: 25%;
+        text-align: left;
+      }
+    }
+  }
 `;
 const StAddInput = styled.input`
   height: 40px;

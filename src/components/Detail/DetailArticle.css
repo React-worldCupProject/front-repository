@@ -1,6 +1,7 @@
 .DtSection {
-  max-width: 1440px;
-  margin: 2% auto;
+  max-width: 1200px;
+  width: 90%;
+  margin: 6% auto;
   border: 1px solid black;
   border-radius: 5%;
 }
@@ -42,6 +43,7 @@
 
 .DtSection .DtContent .DtContent2 {
   width: 100%;
+  padding-top: 23px;
   border: 1px solid black;
 }
 .DtSection .DtContent .DtContent2 p {
@@ -72,10 +74,11 @@
 .DtSection .DtContentBtn button:nth-child(1) {
   position: absolute;
   left: 40%;
+  top: 10%;
 }
 
 .DtSection .DtContentBtn button:nth-child(2) {
   position: absolute;
-  right: 45%;
-  top: 18%;
+  right: 40%;
+  top: 9%;
 }
