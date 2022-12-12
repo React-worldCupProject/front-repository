@@ -1,0 +1,84 @@
+.DtSection {
+  max-width: 1200px;
+  width: 90%;
+  margin: 6% auto;
+  border: 1px solid black;
+  border-radius: 5%;
+}
+
+.DtSection .DtTitle {
+  display: flex;
+  box-sizing: border-box;
+  padding: 3% 1% 1% 2%;
+  width: 100%;
+}
+
+.DtSection .DtTitle span {
+  display: inline-block;
+  width: 10%;
+  border: 1px solid black;
+  margin-left: 1%;
+  padding: 1% 1%;
+  /* height: 50px; */
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.DtSection .DtTitle p {
+  width: 25%;
+  display: inline-block;
+  border: 1px solid black;
+  margin-right: 0.5%;
+  padding-top: 1%;
+  text-align: center;
+}
+
+/* DtTitle 영역 css */
+
+.DtSection .DtContent {
+  width: 100%;
+  padding: 2% 2%;
+  box-sizing: border-box;
+}
+
+.DtSection .DtContent .DtContent2 {
+  width: 100%;
+  padding-top: 23px;
+  border: 1px solid black;
+}
+.DtSection .DtContent .DtContent2 p {
+  display: block;
+  width: 100%;
+  height: 500px;
+  padding: 2% 2%;
+}
+
+/* DtContent 영역 css */
+
+.DtSection .DtContentBtn {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100px;
+  padding: 2% 2%;
+}
+
+.DtSection .DtContentBtn button {
+  width: 100px;
+  height: 50px;
+  color: white;
+  background-color: blueviolet;
+  text-align: center;
+}
+
+.DtSection .DtContentBtn button:nth-child(1) {
+  position: absolute;
+  left: 40%;
+  top: 10%;
+}
+
+.DtSection .DtContentBtn button:nth-child(2) {
+  position: absolute;
+  right: 40%;
+  top: 9%;
+}

@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+.commentwrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.commentwrap .commentInput {
+  margin: 0 auto;
+  padding: 5% 5% 5% 20%;
+}
+
+.commentwrap .commentInput input {
+  display: inline-block;
+  width: 700px;
+  height: 75px;
+  border-radius: 10px;
+}
+
+.commentwrap .commentInput button {
+  margin-left: 5%;
+  width: 10%;
+  height: 50px;
+  background-color: palevioletred;
+  border: none;
+  border-radius: 10px;
+}
+
+.commentwrap .commentlist {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-bottom: 3%;
+}
+
+.commentwrap .commentlist p {
+  display: inline-block;
+  width: 29%;
+  padding-left: 2%;
+}
+
+.commentwrap .commentlist .commentbtndiv {
+  padding-top: 13px;
+  padding-right: 2%;
+  width: 71%;
+}
+
+.commentwrap .commentlist .commentbtndiv button {
+  float: right;
+}
