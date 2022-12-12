@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
+.intro {
+  width: 100%;
+  height: 100vh;
+  padding: 7% 10% 0% 25%;
+  background: linear-gradient(
+    125deg,
+    #cf6060 6.24%,
+    rgba(175, 72, 72, 0.755208) 28.81%,
+    rgba(231, 110, 110, 0.609375) 52.34%,
+    rgba(236, 212, 212, 0.427083) 87.78%,
+    rgba(255, 255, 255, 0) 98.43%
+  );
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.intro .introBox {
+  width: 100vw;
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.intro .introBox > h1,
+h2,
+h3 {
+  text-align: center;
+  padding-right: 30%;
+  margin-top: 0.5%;
+  line-height: 87px;
+}
+
+.intro > .introBox > h1 {
+  font-size: 45px;
+}
+
+.intro > .introBox > h2 {
+  font-size: 35px;
+}
+.intro > .introBox > h3 {
+  font-size: 20px;
+}

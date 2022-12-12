@@ -1,10 +1,10 @@
 import React from "react";
 
-function Layout({ children }) {
+function Layout(props) {
   return (
     <div>
       <Header />
-      {children}
+      {props.children}
       <Footer />
     </div>
   );
@@ -91,7 +91,6 @@ function Header() {
 
 function Footer() {
   if (window.location.pathname === "/") return null;
-
   return (
     <section style={{ ...FooterStyles }}>
       <div style={{ ...divStyle }}>이것이 말로만 듣던 푸터란 말인가!?</div>
