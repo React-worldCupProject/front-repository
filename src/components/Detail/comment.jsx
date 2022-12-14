@@ -1,13 +1,28 @@
 import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { __getComments } from "../../redux/modules/contentsSlice";
+import {
+  __getComments,
+  __DeleteComments,
+} from "../../redux/modules/contentsSlice";
 import "./comment.css";
 
 function CommentInput() {
+  const { id } = useParams();
   const dispatch = useDispatch();
 
   const { isLoading, error, comments } = useSelector((state) => state.content);
+
+  const commentlist = comments.filter((comment) => {
+    return comment.postId === Number(id);
+  });
+  console.log("코멘트 나오나?", commentlist);
+
+  const DeleteHandler = (id) => {
+    dispatch(__DeleteComments(id));
+    window.location.href = "/main";
+  };
 
   useEffect(() => {
     dispatch(__getComments());
@@ -37,14 +52,20 @@ function CommentInput() {
       </form>
       <article>
         <ul className="commentContents">
-          {comments.map((comment) => (
+          {commentlist?.map((comment) => (
             <li className="commentlist">
-              <p>{comment.content}</p>
+              <p>{comment.comment}</p>
 
               {/* <p>{post[0]?.comment[0]?.commenText}</p> */}
               <div className="commentbtndiv">
                 <button>수정</button>
-                <button>삭제</button>
+                <button
+                  onClick={() => {
+                    DeleteHandler(comment.id);
+                  }}
+                >
+                  삭제
+                </button>
               </div>
             </li>
           ))}

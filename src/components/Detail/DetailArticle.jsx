@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { __getpost } from "../../redux/modules/contentsSlice";
+import { __getpost, __DeletePost } from "../../redux/modules/contentsSlice";
 // import { useState } from "react";
 // import { useSelector, useDispatch } from "react-redux";
 import "./DetailArticle.css";
@@ -10,6 +10,11 @@ const DetailAriticle = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { isLoading, error, post } = useSelector((state) => state.content);
+
+  const DeletePostHandler = (id) => {
+    dispatch(__DeletePost(id));
+    window.location.href = "/main";
+  };
 
   const postlist = post.find((post) => {
     return post.id === Number(id);
@@ -45,7 +50,13 @@ const DetailAriticle = () => {
         </div>
       </article>
       <div className="DtContentBtn">
-        <button>삭제</button>
+        <button
+          onClick={() => {
+            DeletePostHandler(postlist.id);
+          }}
+        >
+          삭제
+        </button>
         <button>수정하기</button>
       </div>
     </section>
