@@ -2,14 +2,14 @@ import styled from "styled-components";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { __getpost } from "../../redux/modules/AppSlisce";
+import { __getpost } from "../../redux/modules/contentsSlice";
 
 const MainSection = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
-  const { isLoading, error, post } = useSelector((state) => state.post);
+  const { isLoading, error, post } = useSelector((state) => state.content);
 
   useEffect(() => {
     dispatch(__getpost());

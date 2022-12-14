@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { __getpost } from "../../redux/modules/AppSlisce";
+import { __getpost } from "../../redux/modules/contentsSlice";
 // import { useState } from "react";
 // import { useSelector, useDispatch } from "react-redux";
 import "./DetailArticle.css";
@@ -9,11 +9,13 @@ import "./DetailArticle.css";
 const DetailAriticle = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { isLoading, error, post } = useSelector((state) => state.post);
+  const { isLoading, error, post } = useSelector((state) => state.content);
 
   const postlist = post.find((post) => {
     return post.id === Number(id);
   });
+
+  // console.log("아이디값입니다.", postlist);
 
   useEffect(() => {
     dispatch(__getpost());

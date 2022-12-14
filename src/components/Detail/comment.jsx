@@ -1,35 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { __getpost } from "../../redux/modules/AppSlisce";
-import { __postPost } from "../../redux/modules/commentSlice";
 
+import { __getComments } from "../../redux/modules/contentsSlice";
 import "./comment.css";
 
 function CommentInput() {
   const dispatch = useDispatch();
-  const { id } = useParams();
-  const [comment, setComment] = useState("");
-  const [postId, setPostId] = useState();
 
-  const { isLoading, error, post } = useSelector((state) => state.post);
-
-  const postlist = post.find((post) => {
-    return post.id === Number(id);
-  });
-
-  const onSubmitHandler = (event) => {
-    event.preventDefault();
-    setPostId(postId + 1);
-    const newComment = {
-      postId: postId,
-      commenText: comment,
-    };
-    dispatch(__postPost(...postlist?.comment, newComment));
-  };
+  const { isLoading, error, comments } = useSelector((state) => state.content);
 
   useEffect(() => {
-    dispatch(__getpost());
+    dispatch(__getComments());
   }, [dispatch]);
 
   if (isLoading) {
@@ -42,23 +23,24 @@ function CommentInput() {
 
   return (
     <section className="commentwrap">
-      <form onSubmit={onSubmitHandler} className="commentInput">
+      <form className="commentInput">
         <input
-          type="text"
-          value={comment}
-          onChange={(e) => {
-            setComment(e.target.value);
-            console.log(e.target.value);
-            console.log("현재 comment:", comment);
-          }}
+        // type="text"
+        // value={comments}
+        // onChange={(e) => {
+        // setComments(e.target.value);
+        // console.log(e.target.value);
+        // console.log("현재 comment:", comments);
+        // }}
         />
         <button>입력</button>
       </form>
       <article>
         <ul className="commentContents">
-          {postlist?.comment.map((comment) => (
-            <li className="commentlist" key={postlist.id}>
-              <p>{comment.commenText}</p>
+          {comments.map((comment) => (
+            <li className="commentlist">
+              <p>{comment.content}</p>
+
               {/* <p>{post[0]?.comment[0]?.commenText}</p> */}
               <div className="commentbtndiv">
                 <button>수정</button>
