@@ -4,25 +4,56 @@
       "id": 1,
       "title": "제목입니다.",
       "name": "깨방정 하는 사람",
-      "context": "응원합니다 한국",
-      "comment": [
-        {
-          "commentId": 1,
-          "commenText": "이거 축구 완전 못하는 건가? ㅠㅠ"
-        }
-      ]
+      "context": "응원합니다 한국"
     },
     {
       "id": 2,
-      "title": "제목입니다.",
-      "name": "깨방정 하는 사람",
-      "context": "응원합니다 한국",
-      "comment": [
-        {
-          "commentId": 1,
-          "commenText": "이거 축구 완전 못하는 건가? ㅠㅠ"
-        }
-      ]
+      "title": "쉽게 쉽게 갑시다.",
+      "name": "쉬운 게 가장 최고입니다",
+      "context": "응원합니다 한국"
+    },
+    {
+      "id": 3,
+      "title": "쉽게 쉽게 갑시다.",
+      "name": "쉬운 게 가장 최고입니다",
+      "context": "응원합니다 한국"
+    }
+  ],
+  "comments": [
+    {
+      "postId": 0,
+      "id": 1,
+      "content": "댓글 다 같은 거임"
+    },
+    {
+      "postId": 0,
+      "id": 1,
+      "content": "ㅎㅎㅎㅎㅎ"
+    },
+    {
+      "postId": 2,
+      "id": 2,
+      "content": "ㅇㄹㅇㄹㅇㄹㅇㄹ"
+    },
+    {
+      "postId": 0,
+      "id": 3,
+      "content": "ㄷㄷㄷㄷㄷㄷ"
+    },
+    {
+      "postId": 2,
+      "id": 4,
+      "content": "ㄹㄹㄹㄹㅇㄹㅇㄹㅇㄹㅇㄹ"
+    },
+    {
+      "postId": 1,
+      "id": 4,
+      "content": "ㄹㄹㄹㄹㅇㄹㅇㄹㅇㄹㅇㄹ"
+    },
+    {
+      "postId": 1,
+      "id": 5,
+      "content": "sdsdsdssd"
     }
   ]
 }
