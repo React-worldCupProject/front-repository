@@ -1,9 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Layout(props) {
+  const navigate = useNavigate();
+
   return (
     <>
-      <Header />
+      <Header navigate={navigate} />
       {props.children}
       <Footer />
     </>
@@ -71,7 +74,7 @@ const divStyle = {
   margin: "0 auto",
 };
 
-function Header() {
+function Header({ navigate }) {
   if (window.location.pathname === "/") return null;
 
   return (
@@ -81,7 +84,14 @@ function Header() {
       </div>
       <div style={{ ...HeaderRightStyles }}>
         <ul style={{ ...HeaderUlStyles }}>
-          <li style={{ ...HeaderliStyles }}>메인페이지</li>
+          <li
+            style={{ ...HeaderliStyles }}
+            onClick={() => {
+              navigate(`/main`);
+            }}
+          >
+            메인페이지
+          </li>
           <li style={{ ...HeaderliStyles }}>조원 소개 페이지</li>
         </ul>
       </div>

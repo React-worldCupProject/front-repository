@@ -5,6 +5,7 @@ import axios from "axios";
 
 const initialState = {
   post: [],
+  comment: [],
   isLoading: false,
   error: null,
 };
@@ -15,10 +16,25 @@ export const __getpost = createAsyncThunk(
     try {
       const data = await axios.get(`http://localhost:3001/post`);
       return thunkAPI.fulfillWithValue(data.data);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
-      console.log("데이터를 불러오지 못했습니다.");
+      // console.log("데이터를 불러오지 못했습니다.");
+    }
+  }
+);
+
+export const __deleteComment = createAsyncThunk(
+  "deleteComment",
+  async (payload, thunkAPI) => {
+    try {
+      const data = await axios.put(
+        `http://localhost:3001/post/${payload.id}`,
+        payload
+      );
+      return thunkAPI.fulfillWithValue(data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -39,6 +55,11 @@ const AppSlice = createSlice({
     [__getpost.rejected]: (state, action) => {
       state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
       state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
+    },
+    [__deleteComment.fulfilled]: (state, action) => {
+      console.log(state, action);
+      state.isLoading = false; // 네트워크 요청이 끝났으니, false로 변경합니다.
+      state.post.filter((post) => post?.id !== action.payload);
     },
   },
 });

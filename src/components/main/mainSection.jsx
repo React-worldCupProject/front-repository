@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { __getpost } from "../../redux/modules/AppSlisce";
 
 const MainSection = () => {
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
   const { isLoading, error, post } = useSelector((state) => state.post);
 
   useEffect(() => {
@@ -39,7 +43,12 @@ const MainSection = () => {
         <StTitle>응원글 보러가기! &#9917; </StTitle>
         <ul>
           {post.map((post) => (
-            <li key={post.id}>
+            <li
+              key={post.id}
+              onClick={() => {
+                navigate(`/main/${post.id}`);
+              }}
+            >
               <span>글번호 :</span>
               <p>{post.id}</p>
               <span>제목 :</span>
