@@ -1,16 +1,25 @@
 {
   "post": [
     {
+      "id": 1,
+      "title": "쉽게 쉽게 갑시다.",
+      "name": "쉬운 게 가장 최고입니다",
+      "context": "응원합니다 한국",
+      "update": false
+    },
+    {
       "id": 2,
       "title": "쉽게 쉽게 갑시다.",
       "name": "쉬운 게 가장 최고입니다",
-      "context": "응원합니다 한국"
+      "context": "응원합니다 한국",
+      "update": false
     },
     {
       "id": 3,
       "title": "쉽게 쉽게 갑시다.",
       "name": "쉬운 게 가장 최고입니다",
-      "context": "응원합니다 한국"
+      "context": "응원합니다 한국",
+      "update": false
     }
   ],
   "comments": [
@@ -20,19 +29,14 @@
       "comment": "같은 댓글만 보임"
     },
     {
-      "postId": 2,
+      "postId": 3,
       "id": 2,
-      "comment": "같은 댓글만 보임"
+      "comment": "다른 댓글 완성"
     },
     {
-      "postId": 2,
+      "postId": 3,
       "id": 2,
-      "comment": "같은 댓글만 보임"
-    },
-    {
-      "postId": 2,
-      "id": 2,
-      "comment": "같은 댓글만 보임"
+      "comment": "우와아앙"
     }
   ]
 }
