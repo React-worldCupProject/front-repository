@@ -1,0 +1,28 @@
+{
+  "post": [
+    {
+      "id": 1,
+      "title": "제목입니다.",
+      "name": "깨방정 하는 사람",
+      "context": "응원합니다 한국",
+      "comment": [
+        {
+          "commentId": 1,
+          "commenText": "이거 축구 완전 못하는 건가? ㅠㅠ"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "제목입니다.",
+      "name": "깨방정 하는 사람",
+      "context": "응원합니다 한국",
+      "comment": [
+        {
+          "commentId": 1,
+          "commenText": "이거 축구 완전 못하는 건가? ㅠㅠ"
+        }
+      ]
+    }
+  ]
+}

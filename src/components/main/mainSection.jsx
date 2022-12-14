@@ -1,6 +1,24 @@
 import styled from "styled-components";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { __getpost } from "../../redux/modules/AppSlisce";
 
 const MainSection = () => {
+  const dispatch = useDispatch();
+  const { isLoading, error, post } = useSelector((state) => state.post);
+
+  useEffect(() => {
+    dispatch(__getpost());
+  }, [dispatch]);
+
+  if (isLoading) {
+    return <div>로딩 중....</div>;
+  }
+
+  if (error) {
+    return <div>{error.message}</div>;
+  }
+
   return (
     <div>
       <StAddForm>
@@ -16,35 +34,20 @@ const MainSection = () => {
           <StAddInput2 />
           <StAddButton>등록 &#127942;</StAddButton>
         </StInputGroup>
-        <p></p>
       </StAddForm>
       <StAddTitle>
         <StTitle>응원글 보러가기! &#9917; </StTitle>
         <ul>
-          <li>
-            <span>글번호 :</span>
-            <p> 1</p>
-            <span>제목 :</span>
-            <p> 우리는 할 수 있다</p>
-            <span>작성자 :</span>
-            <p>3조 화이팅</p>
-          </li>
-          <li>
-            <span>글번호 :</span>
-            <p> 1</p>
-            <span>제목 :</span>
-            <p> 우리는 할 수 있다</p>
-            <span>작성자 :</span>
-            <p>3조 화이팅</p>
-          </li>
-          <li>
-            <span>글번호 :</span>
-            <p> 1</p>
-            <span>제목 :</span>
-            <p> 우리는 할 수 있다</p>
-            <span>작성자 :</span>
-            <p>3조 화이팅</p>
-          </li>
+          {post.map((post) => (
+            <li key={post.id}>
+              <span>글번호 :</span>
+              <p>{post.id}</p>
+              <span>제목 :</span>
+              <p>{post.title}</p>
+              <span>작성자 :</span>
+              <p>{post.name}</p>
+            </li>
+          ))}
         </ul>
       </StAddTitle>
     </div>

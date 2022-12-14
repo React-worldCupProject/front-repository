@@ -7,6 +7,7 @@ import Layout from "./Layout";
 
 const Router = () => {
   const [pathname, setpathname] = useState(window.location.pathname);
+
   return (
     <BrowserRouter>
       <Layout pathname={pathname}>
