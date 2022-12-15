@@ -87,8 +87,7 @@ function CommentInput() {
         <input
           type="text"
           onChange={(event) => {
-            const { value } = event.target;
-            setcomment({ ...postcomment, comment: value });
+            setcomment({ ...postcomment, comment: event.target.value });
           }}
         />
         <button onClick={commentHandler}>입력</button>
