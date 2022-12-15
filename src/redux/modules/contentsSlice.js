@@ -14,7 +14,7 @@ export const __getpost = createAsyncThunk(
   "getPost",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get(`http://localhost:3001/post`);
+      const data = await axios.get(`https://serverjson-phi.vercel.app/post`);
       //       const posttlist = post.find((post) => {
       //   return post.id === Number(id);
       // });
@@ -31,7 +31,7 @@ export const __getpost = createAsyncThunk(
 export const __postPOst = createAsyncThunk("postPost", async (payload) => {
   "postPOst";
   try {
-    await axios.post("http://localhost:3001/post", payload);
+    await axios.post("https://serverjson-phi.vercel.app/post", payload);
     console.log(payload);
   } catch (error) {
     console.log(error);
@@ -43,7 +43,7 @@ export const __changePost = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await axios.patch(
-        `http://localhost:3001/post/${payload.id}`,
+        `https://serverjson-phi.vercel.app/post/${payload.id}`,
         payload
       );
       //
@@ -62,7 +62,9 @@ export const __DeletePost = createAsyncThunk(
   "deletePost",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.delete(`http://localhost:3001/post/${payload}`);
+      const data = await axios.delete(
+        `https://serverjson-phi.vercel.app/post/${payload}`
+      );
       //       const posttlist = post.find((post) => {
       //   return post.id === Number(id);
       // });
@@ -80,7 +82,9 @@ export const __getComments = createAsyncThunk(
   "getComments",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get(`http://localhost:3001/comments`);
+      const data = await axios.get(
+        `https://serverjson-phi.vercel.app/comments`
+      );
       console.log(data.data);
       // console.log(data.data.filter((comment) => comment.postId === payload));
       // 네트워크 요청이 성공한 경우 dispatch해주는 기능을 가진 API (Propmise가 resolved된 경우)
@@ -98,7 +102,10 @@ export const __postComments = createAsyncThunk(
   "postComments",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.post(`http://localhost:3001/comments`, payload);
+      const data = await axios.post(
+        `https://serverjson-phi.vercel.app/comments`,
+        payload
+      );
       console.log(data.data);
       // console.log(data.data.filter((comment) => comment.postId === payload));
       // 네트워크 요청이 성공한 경우 dispatch해주는 기능을 가진 API (Propmise가 resolved된 경우)
@@ -117,7 +124,7 @@ export const __DeleteComments = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await axios.delete(
-        `http://localhost:3001/comments/${payload}`
+        `https://serverjson-phi.vercel.app/comments/${payload}`
       );
       // console.log(data.data);
       // console.log(data.data.filter((comment) => comment.postId === payload));
@@ -137,7 +144,7 @@ export const __updatecomment = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await axios.patch(
-        `http://localhost:3001/comments/${payload.id}`,
+        `https://serverjson-phi.vercel.app/comments/${payload.id}`,
         payload
       );
       //댓글 처리 성공했을 때
