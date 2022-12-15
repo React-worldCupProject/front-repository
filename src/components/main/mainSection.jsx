@@ -13,7 +13,6 @@ const MainSection = () => {
     title: " ",
     name: " ",
     context: "",
-    update: false,
   });
 
   const postHandler = () => {

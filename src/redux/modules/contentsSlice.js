@@ -38,25 +38,25 @@ export const __postPOst = createAsyncThunk("postPost", async (payload) => {
   }
 });
 
-export const __changePost = createAsyncThunk(
-  "changePost",
-  async (payload, thunkAPI) => {
-    try {
-      const data = await axios.patch(
-        `https://serverjson-phi.vercel.app/posts${payload.id}`,
-        payload
-      );
-      //
-      // });
-      return thunkAPI.fulfillWithValue(data.data);
+// export const __changePost = createAsyncThunk(
+//   "changePost",
+//   async (payload, thunkAPI) => {
+//     try {
+//       const data = await axios.patch(
+//         `https://serverjson-phi.vercel.app/posts${payload.id}`,
+//         payload
+//       );
+//       //
+//       // });
+//       return thunkAPI.fulfillWithValue(data.data);
 
-      // console.log(data);
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-      // console.log("데이터를 불러오지 못했습니다.");
-    }
-  }
-);
+//       // console.log(data);
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error);
+//       // console.log("데이터를 불러오지 못했습니다.");
+//     }
+//   }
+// );
 
 export const __DeletePost = createAsyncThunk(
   "deletePost",
@@ -183,19 +183,19 @@ const contentsSlice = createSlice({
       state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
     },
 
-    //post change
-    [__changePost.pending]: (state) => {
-      state.isLoading = true; // 네트워크 요청이 시작되면 로딩상태를 true로 변경합니다.
-    },
-    [__changePost.fulfilled]: (state, action) => {
-      // console.log(state, action);
-      state.isLoading = false; // 네트워크 요청이 끝났으니, false로 변경합니다.
-      state.post = action.payload; // Store에 있는 todos에 서버에서 가져온 todos를 넣습니다.
-    },
-    [__changePost.rejected]: (state, action) => {
-      state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
-      state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
-    },
+    // //post change
+    // [__changePost.pending]: (state) => {
+    //   state.isLoading = true; // 네트워크 요청이 시작되면 로딩상태를 true로 변경합니다.
+    // },
+    // [__changePost.fulfilled]: (state, action) => {
+    //   // console.log(state, action);
+    //   state.isLoading = false; // 네트워크 요청이 끝났으니, false로 변경합니다.
+    //   state.post = action.payload; // Store에 있는 todos에 서버에서 가져온 todos를 넣습니다.
+    // },
+    // [__changePost.rejected]: (state, action) => {
+    //   state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
+    //   state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
+    // },
 
     //post delete
     [__DeletePost.pending]: (state) => {

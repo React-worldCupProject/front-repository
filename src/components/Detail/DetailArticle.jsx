@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import {
-  __getpost,
-  __DeletePost,
-  __changePost,
-} from "../../redux/modules/contentsSlice";
+import { __getpost, __DeletePost } from "../../redux/modules/contentsSlice";
 // import { useState } from "react";
 // import { useSelector, useDispatch } from "react-redux";
 import "./DetailArticle.css";
@@ -15,16 +11,10 @@ const DetailAriticle = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { isLoading, error, post } = useSelector((state) => state.content);
-  const [update, setUpdate] = useState(true);
+  const [Uppostdate, setUppostdate] = useState(true);
 
   const changeHandler = () => {
-    const newUpdate = {
-      id: postlist.id,
-      update: false,
-    };
-
-    dispatch(__changePost(newUpdate, setUpdate));
-    window.location.href = "/main";
+    setUppostdate(false);
   };
 
   const DeletePostHandler = (id) => {
@@ -53,7 +43,7 @@ const DetailAriticle = () => {
 
   return (
     <>
-      {postlist.update === true ? (
+      {Uppostdate === true ? (
         <section className="DtSection">
           <div className="DtTitle">
             <span>글번호</span>
@@ -79,7 +69,7 @@ const DetailAriticle = () => {
             </button>
             <button
               onClick={() => {
-                changeHandler(postlist.id);
+                changeHandler(false);
               }}
             >
               수정하기
@@ -110,7 +100,13 @@ const DetailAriticle = () => {
             >
               삭제
             </button>
-            <button>완료하기</button>
+            <button
+              onClick={() => {
+                changeHandler(true);
+              }}
+            >
+              완료하기
+            </button>
           </div>
         </from>
       )}
