@@ -3,26 +3,41 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { __getpost } from "../../redux/modules/contentsSlice";
+import axios from "axios";
+import { useState } from "react";
 
 const MainSection = () => {
+  const [posts2, setPosts2] = useState(null);
+  const [post2, setPost2] = useState({ title: "", name: "", context: "" });
+
+  const fetchPosts = async () => {
+    const { data } = await axios.get("http://localhost:3001/post");
+    setPosts2(data);
+  };
+
+  const onSubmitHandler = (post) => {
+    axios.post("http://localhost:3001/post", post);
+    setPosts2([...posts2, post2]);
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  console.log(posts2);
+
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
-
   const { isLoading, error, post } = useSelector((state) => state.content);
-
   useEffect(() => {
     dispatch(__getpost());
   }, [dispatch]);
-
   if (isLoading) {
     return <div>로딩 중....</div>;
   }
-
   if (error) {
     return <div>{error.message}</div>;
   }
-
   return (
     <div>
       <StAddForm>
@@ -30,15 +45,50 @@ const MainSection = () => {
           <StTitle>
             &#129351; 국가대표 선수들에게 응원의 한마디를 남겨주세요! &#128047;
           </StTitle>
-          <StFormLabel>제목</StFormLabel>
-          <StAddInput />
-          <StFormLabel>작성자</StFormLabel>
-          <StAddInput />
-          <StFormLabel>내용</StFormLabel>
-          <StAddInput2 />
-          <StAddButton>등록 &#127942;</StAddButton>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              onSubmitHandler(post2);
+            }}
+          >
+            <StFormLabel>제목</StFormLabel>
+            <StAddInput
+              type="text"
+              onChange={(ev) => {
+                const { value } = ev.target;
+                setPost2({
+                  ...post2,
+                  title: value,
+                });
+              }}
+            />
+            <StFormLabel>작성자</StFormLabel>
+            <StAddInput
+              type="text"
+              onChange={(ev) => {
+                const { value } = ev.target;
+                setPost2({
+                  ...post2,
+                  name: value,
+                });
+              }}
+            />
+            <StFormLabel>내용</StFormLabel>
+            <StAddInput2
+              type="text"
+              onChange={(ev) => {
+                const { value } = ev.target;
+                setPost2({
+                  ...post2,
+                  context: value,
+                });
+              }}
+            />
+            <StAddButton>등록 &#127942;</StAddButton>
+          </form>
         </StInputGroup>
       </StAddForm>
+
       <StAddTitle>
         <StTitle>응원글 보러가기! &#9917; </StTitle>
         <ul>
@@ -76,9 +126,10 @@ const StFormLabel = styled.label`
   font-size: 17px;
   font-weight: 700;
   margin: 0 auto;
-  display: block;
+  display: grid;
+  align-items: center;
 `;
-const StAddForm = styled.form`
+const StAddForm = styled.div`
   background-color: #eee;
   border-radius: 3px;
   margin: 0 auto;

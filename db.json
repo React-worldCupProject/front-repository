@@ -1,13 +1,6 @@
 {
   "post": [
     {
-      "id": 1,
-      "title": "쉽게 쉽게 갑시다.",
-      "name": "쉬운 게 가장 최고입니다",
-      "context": "응원합니다 한국",
-      "update": false
-    },
-    {
       "id": 2,
       "title": "쉽게 쉽게 갑시다.",
       "name": "쉬운 게 가장 최고입니다",
@@ -20,6 +13,54 @@
       "name": "쉬운 게 가장 최고입니다",
       "context": "응원합니다 한국",
       "update": false
+    },
+    {
+      "title": "히히 호호",
+      "name": "",
+      "context": "",
+      "id": 9
+    },
+    {
+      "title": "ㅇㄹ",
+      "name": "ㄹㅇ",
+      "context": "ㅇㄹ",
+      "id": 10
+    },
+    {
+      "title": "ㅇ",
+      "name": "ㅇ",
+      "context": "ㅇ",
+      "id": 11
+    },
+    {
+      "title": "ㅇ",
+      "name": "ㅇ",
+      "context": "ㅇ",
+      "id": 12
+    },
+    {
+      "title": "ㅇㅇㅇ",
+      "name": "ㅇ",
+      "context": "ㅇ",
+      "id": 13
+    },
+    {
+      "title": "ㅋㄴ",
+      "name": "ㅋㄴ",
+      "context": "ㅋㄴ",
+      "id": 14
+    },
+    {
+      "title": "안녕",
+      "name": "힘두러",
+      "context": "하지만 화이팅!",
+      "id": 15
+    },
+    {
+      "title": "테스트",
+      "name": "히힛",
+      "context": "ㅇㅇ",
+      "id": 16
     }
   ],
   "comments": [
