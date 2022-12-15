@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import {
   __getComments,
@@ -13,6 +14,7 @@ import "./comment.css";
 function CommentInput() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [update, setUpdate] = useState(false);
   const { isLoading, error, comments } = useSelector((state) => state.content);
 
@@ -23,21 +25,28 @@ function CommentInput() {
   );
 
   const [postcomment, setcomment] = useState({
-    postId: Number(id),
+    postId: null,
+    id: null,
     comment: "",
   });
 
-  const upDateCommentHandler = () => {
-    const newUpdatecomment = {
-      postId: commentlist,
-      id: null,
-      comment: postcomment,
+  const [editcomment, setEditcomment] = useState("");
+
+  // console.log("무엇인지1", editcomment);
+
+  const upDateCommentHandler = (commentId) => {
+    // console.log("무엇인지?", editcomment);
+    let newcomment = {
+      postId: Number(id),
+      id: commentId,
+      comment: editcomment,
     };
 
-    dispatch(__updatecomment(newUpdatecomment, setUpdate));
+    dispatch(__updatecomment([commentId, newcomment]));
     setUpdate(true);
-    // window.location.href = "/main";
+    navigate(`/main`);
   };
+
   // console.log("코멘트 나오나?", commentlist);
 
   // const changeCommentHandler = () => {
@@ -50,9 +59,9 @@ function CommentInput() {
   // };
 
   const commentHandler = () => {
-    dispatch(__postComments(postcomment));
-    console.log("comments", __postComments);
-    window.location.href = "/main";
+    dispatch(__postComments([postcomment, Number(id)]));
+    // console.log("comments", __postComments);
+    navigate(`/main`);
   };
 
   const DeleteHandler = (id) => {
@@ -97,6 +106,7 @@ function CommentInput() {
                       <button
                         onClick={() => {
                           setUpdate(true);
+                          setEditcomment(comment.comment);
                         }}
                       >
                         수정
@@ -114,13 +124,18 @@ function CommentInput() {
                   <li>
                     <input
                       type="text"
-                      defaultValue={comment.comment}
+                      value={editcomment}
                       onChange={(event) => {
-                        setcomment(event.target.Value);
-                        console.log(setcomment);
+                        setEditcomment(event.target.value);
                       }}
                     />
-                    <button onClick={upDateCommentHandler}>완료</button>
+                    <button
+                      onClick={() => {
+                        upDateCommentHandler(comment.id);
+                      }}
+                    >
+                      수정완료
+                    </button>
                   </li>
                 )}
               </>

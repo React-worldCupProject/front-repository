@@ -14,7 +14,7 @@ export const __getpost = createAsyncThunk(
   "getPost",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get(`https://serverjson-phi.vercel.app/post`);
+      const data = await axios.get(`https://serverjson-phi.vercel.app/posts`);
       //       const posttlist = post.find((post) => {
       //   return post.id === Number(id);
       // });
@@ -31,7 +31,7 @@ export const __getpost = createAsyncThunk(
 export const __postPOst = createAsyncThunk("postPost", async (payload) => {
   "postPOst";
   try {
-    await axios.post("https://serverjson-phi.vercel.app/post", payload);
+    await axios.post("https://serverjson-phi.vercel.app/posts", payload);
     console.log(payload);
   } catch (error) {
     console.log(error);
@@ -43,7 +43,7 @@ export const __changePost = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await axios.patch(
-        `https://serverjson-phi.vercel.app/post/${payload.id}`,
+        `https://serverjson-phi.vercel.app/posts${payload.id}`,
         payload
       );
       //
@@ -63,7 +63,7 @@ export const __DeletePost = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await axios.delete(
-        `https://serverjson-phi.vercel.app/post/${payload}`
+        ` https://serverjson-phi.vercel.app/posts/${payload}`
       );
       //       const posttlist = post.find((post) => {
       //   return post.id === Number(id);
@@ -83,7 +83,7 @@ export const __getComments = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await axios.get(
-        `https://serverjson-phi.vercel.app/comments`
+        ` https://serverjson-phi.vercel.app/comments`
       );
       console.log(data.data);
       // console.log(data.data.filter((comment) => comment.postId === payload));
@@ -102,9 +102,12 @@ export const __postComments = createAsyncThunk(
   "postComments",
   async (payload, thunkAPI) => {
     try {
+      const [postcomment, postId] = payload;
+      const dateId = new Date().toISOString();
+      const newComment = { ...postcomment, postId: postId, id: dateId };
       const data = await axios.post(
         `https://serverjson-phi.vercel.app/comments`,
-        payload
+        newComment
       );
       console.log(data.data);
       // console.log(data.data.filter((comment) => comment.postId === payload));
@@ -124,7 +127,7 @@ export const __DeleteComments = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await axios.delete(
-        `https://serverjson-phi.vercel.app/comments/${payload}`
+        `https://serverjson-phi.vercel.app/comments${payload}`
       );
       // console.log(data.data);
       // console.log(data.data.filter((comment) => comment.postId === payload));
@@ -142,10 +145,12 @@ export const __DeleteComments = createAsyncThunk(
 export const __updatecomment = createAsyncThunk(
   "updatecomment",
   async (payload, thunkAPI) => {
+    console.log(payload);
     try {
-      const data = await axios.patch(
-        `https://serverjson-phi.vercel.app/comments/${payload.id}`,
-        payload
+      const [commentId, newcomment] = payload;
+      const data = await axios.put(
+        `https://serverjson-phi.vercel.app/comments${commentId}`,
+        newcomment
       );
       //댓글 처리 성공했을 때
       // const posttlist = post.find((post) => {
