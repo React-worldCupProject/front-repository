@@ -1,3 +1,5 @@
+import React from "react";
+
 import CommentInput from "../../components/Detail/comment";
 import DetailAriticle from "../../components/Detail/DetailArticle";
 
