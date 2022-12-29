@@ -87,7 +87,8 @@ function CommentInput() {
         <input
           type="text"
           onChange={(event) => {
-            setcomment({ ...postcomment, comment: event.target.value });
+            const { value } = event.target;
+            setcomment({ ...postcomment, comment: value });
           }}
         />
         <button onClick={commentHandler}>입력</button>
@@ -120,21 +121,24 @@ function CommentInput() {
                     </div>
                   </li>
                 ) : (
-                  <li>
+                  <li className="commentlist">
                     <input
                       type="text"
+                      className="textInput"
                       value={editcomment}
                       onChange={(event) => {
                         setEditcomment(event.target.value);
                       }}
                     />
-                    <button
-                      onClick={() => {
-                        upDateCommentHandler(comment.id);
-                      }}
-                    >
-                      수정완료
-                    </button>
+                    <div className="commentbtndiv2">
+                      <button
+                        onClick={() => {
+                          upDateCommentHandler(comment.id);
+                        }}
+                      >
+                        완료
+                      </button>
+                    </div>
                   </li>
                 )}
               </>

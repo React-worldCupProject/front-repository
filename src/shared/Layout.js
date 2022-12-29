@@ -21,8 +21,7 @@ const HeaderStyles = {
   border: "none",
   backgroundColor: "#E98181",
   boxShadow: "2% 2% 2% 2%",
-  padding: "1% 1% 1% 1%",
-  margin: "0% 0% 0% 0% ",
+  padding: "0% 1% 0% 1%",
 };
 
 const HeaderLeftStyles = {
@@ -49,7 +48,7 @@ const HeaderUlStyles = {
 };
 
 const HeaderliStyles = {
-  fontSize: "21px",
+  fontSize: "1.2rem",
   fontWeight: "500",
   cursor: "pointer",
   lineHeight: "20px",

@@ -1,30 +1,67 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import { __getpost, __DeletePost } from "../../redux/modules/contentsSlice";
+import {
+  __getpost,
+  __DeletePost,
+  __upDatePost,
+} from "../../redux/modules/contentsSlice";
 // import { useState } from "react";
 // import { useSelector, useDispatch } from "react-redux";
 import "./DetailArticle.css";
 
 const DetailAriticle = () => {
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const { state } = useLocation();
+  const navigate = useNavigate();
   const { isLoading, error, post } = useSelector((state) => state.content);
   const [Uppostdate, setUppostdate] = useState(true);
+
+  const [inputs, setInputs] = useState({
+    ids: state.id,
+    titles: state.title,
+    names: state.name,
+    contexts: state.context,
+  });
+
+  const { ids, titles, names, contexts } = inputs;
+
+  console.log("잘 넘어오나?", inputs);
+  const onChnage = (e) => {
+    const { value, name } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
 
   const changeHandler = () => {
     setUppostdate(false);
   };
 
-  const DeletePostHandler = (id) => {
-    dispatch(__DeletePost(id));
+  const DeletePostHandler = () => {
+    dispatch(__DeletePost(state.id));
     window.location.href = "/main";
   };
 
-  const postlist = post.find((post) => {
-    return post.id === Number(id);
-  });
+  const updateHandler = () => {
+    if (titles.trim() === "" || contexts.trim() === "") {
+      alert("내용과 제목을 입력해주세요");
+      return;
+    }
+    const upDateContent = {
+      id: ids,
+      title: titles,
+      name: names,
+      context: contexts,
+    };
+    const payload = [upDateContent.id, upDateContent];
+    dispatch(__upDatePost(payload));
+    setUppostdate(true);
+    navigate(`/main`);
+    // console.log("잘 넘어갔나?", upDateContent);
+  };
 
   // console.log("아이디값입니다.", postlist);
 
@@ -47,22 +84,22 @@ const DetailAriticle = () => {
         <section className="DtSection">
           <div className="DtTitle">
             <span>글번호</span>
-            <p>{postlist.id} </p>
+            <p>{ids} </p>
             <span>제목</span>
-            <p>{postlist.title}</p>
+            <p>{titles}</p>
 
             <span>작성자</span>
-            <p>{postlist.name}</p>
+            <p>{names}</p>
           </div>
           <article className="DtContent">
             <div className="DtContent2">
-              <p>{postlist.context}</p>
+              <p>{contexts}</p>
             </div>
           </article>
           <div className="DtContentBtn">
             <button
               onClick={() => {
-                DeletePostHandler(postlist.id);
+                DeletePostHandler(ids);
               }}
             >
               삭제
@@ -77,38 +114,42 @@ const DetailAriticle = () => {
           </div>
         </section>
       ) : (
-        <from className="DtSection">
+        <section className="DtSection2">
           <div className="DtTitle">
             <span>글번호</span>
-            <p>{postlist.id} </p>
+            <p>{ids} </p>
             <span>제목</span>
-            <input type="text" defaultValue={postlist.title} />
+            <input
+              type="text"
+              name="titles"
+              value={titles}
+              onChange={onChnage}
+            ></input>
 
             <span>작성자</span>
-            <p>{postlist.name}</p>
+            <p>{names}</p>
           </div>
-          <article className="DtContent">
-            <div className="DtContent2">
-              <textarea defaultValue={postlist.context} />
-            </div>
-          </article>
+
+          <div className="DtContent">
+            <textarea
+              className="DtContent2"
+              name="contexts"
+              value={contexts}
+              onChange={onChnage}
+            />
+          </div>
+
           <div className="DtContentBtn">
             <button
               onClick={() => {
-                DeletePostHandler(postlist.id);
+                DeletePostHandler(ids);
               }}
             >
               삭제
             </button>
-            <button
-              onClick={() => {
-                changeHandler(true);
-              }}
-            >
-              완료하기
-            </button>
+            <button onClick={updateHandler}>완료하기</button>
           </div>
-        </from>
+        </section>
       )}
     </>
   );

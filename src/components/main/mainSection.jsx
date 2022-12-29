@@ -70,7 +70,7 @@ const MainSection = () => {
             <li
               key={post.id}
               onClick={() => {
-                navigate(`/main/${post.id}`);
+                navigate(`/main/${post.id}`, { state: post });
               }}
             >
               <span>글번호 :</span>

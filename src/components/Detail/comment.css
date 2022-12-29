@@ -38,7 +38,7 @@
 .commentwrap .commentlist p {
   display: inline-block;
   width: 29%;
-  padding-left: 2%;
+  padding: 2% 2%;
 }
 
 .commentwrap .commentlist .commentbtndiv {
@@ -48,5 +48,46 @@
 }
 
 .commentwrap .commentlist .commentbtndiv button {
+  display: block;
+  width: 50px;
+  height: 30px;
   float: right;
+  background-color: palevioletred;
+  border: none;
+  border-radius: 10px;
+  margin: 1.3% 0.5%;
+}
+
+.commentwrap .commentlist .commentbtndiv button:hover {
+  opacity: 80%;
+}
+
+.commentwrap .commentlist {
+  width: 100%;
+}
+.commentwrap .commentlist .textInput {
+  width: 100vw;
+  margin: 1% 2%;
+  padding: 2% 2%;
+}
+
+.commentwrap .commentlist .commentbtndiv2 {
+  padding-top: 30px;
+  padding-right: 2%;
+  width: 10%;
+}
+
+.commentwrap .commentlist .commentbtndiv2 button {
+  display: block;
+  width: 50px;
+  height: 30px;
+  float: right;
+  background-color: palevioletred;
+  border: none;
+  border-radius: 10px;
+  margin: 1.3% 0.5%;
+}
+
+.commentwrap .commentlist .commentbtndiv2 button:hover {
+  opacity: 80%;
 }

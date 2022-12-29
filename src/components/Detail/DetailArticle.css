@@ -82,3 +82,88 @@
   right: 40%;
   top: 9%;
 }
+
+/* 수정하기 */
+.DtSection2 {
+  max-width: 1200px;
+  width: 90%;
+  margin: 6% auto;
+  border: 1px solid black;
+  border-radius: 5%;
+}
+
+.DtSection2 .DtTitle {
+  display: flex;
+  box-sizing: border-box;
+  padding: 3% 1% 1% 2%;
+  width: 100%;
+}
+
+.DtSection2 .DtTitle span {
+  display: inline-block;
+  width: 10%;
+  border: 1px solid black;
+  margin-left: 1%;
+  padding: 1% 1%;
+  /* height: 50px; */
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.DtSection2 .DtTitle p {
+  width: 25%;
+  display: inline-block;
+  border: 1px solid black;
+  margin-right: 0.5%;
+  padding-top: 1%;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* DtTitle 영역 css */
+
+.DtSection2 .DtContent {
+  width: 100%;
+  padding: 2% 2%;
+  box-sizing: border-box;
+}
+
+.DtSection2 .DtContent .DtContent2 {
+  width: 100%;
+  height: 500px;
+  padding-top: 23px;
+  padding-left: 23px;
+  border: 1px solid black;
+  font-size: 1.2rem;
+  resize: none;
+}
+
+/* DtContent 영역 css */
+
+.DtSection2 .DtContentBtn {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100px;
+  padding: 2% 2%;
+}
+
+.DtSection2 .DtContentBtn button {
+  width: 100px;
+  height: 50px;
+  color: white;
+  background-color: blueviolet;
+  text-align: center;
+}
+
+.DtSection2 .DtContentBtn button:nth-child(1) {
+  position: absolute;
+  left: 40%;
+  top: 10%;
+}
+
+.DtSection2 .DtContentBtn button:nth-child(2) {
+  position: absolute;
+  right: 40%;
+  top: 9%;
+}
